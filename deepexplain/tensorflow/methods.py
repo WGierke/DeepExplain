@@ -73,7 +73,6 @@ class AttributionMethod(object):
         self.session = session
         self.keras_learning_phase = keras_learning_phase
         self.has_multiple_inputs = type(self.X) is list or type(self.X) is tuple
-        print ('Model with multiple inputs: ', self.has_multiple_inputs)
 
     def session_run(self, T, xs):
         feed_dict = {}
@@ -351,7 +350,6 @@ class Occlusion(PerturbationBasedMethod):
         else:
             self.step = 1
         self.replace_value = 0.0
-        print('Input shape: %s; window_shape %s; step %s' % (input_shape, self.window_shape, self.step))
 
     def run(self):
         self._run_original()
@@ -449,7 +447,6 @@ class DeepExplain(object):
             method_class, method_flag = attribution_methods[self.method]
         else:
             raise RuntimeError('Method must be in %s' % list(attribution_methods.keys()))
-        print('DeepExplain: running "%s" explanation method (%d)' % (self.method, method_flag))
         self._check_ops()
         _GRAD_OVERRIDE_CHECKFLAG = 0
 
